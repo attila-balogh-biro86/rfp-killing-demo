@@ -1,5 +1,7 @@
 package com.littlebig.rfpkillingmodel.domain;
 
+import java.util.Optional;
+
 import com.littlebig.rfpkillingmodel.service.MissionSourceLoaderService;
 
 import jakarta.persistence.Entity;
@@ -14,17 +16,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Mission {
+public class Mission{
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private Long sourceId;
-  private MissionSource sourceType;
+  private MissionSourceTypes sourceType;
   private String missionDescription;
 
   @Transient
-  private BaseEntity source;
+  private MissionSource source;
 
   @Transient
   private static MissionSourceLoaderService sourceLoaderService;
@@ -39,4 +41,14 @@ public class Mission {
   public static void setSourceLoaderService(MissionSourceLoaderService sourceLoaderService) {
     Mission.sourceLoaderService = sourceLoaderService;
   }
+
+  public Optional<Long> getRfpId(){
+    return MissionSourceTypes.RFP == sourceType ? Optional.of(this.sourceId) : Optional.empty();
+  }
+
+  public Optional<Long> getQuotationId(){
+    return MissionSourceTypes.QUOTATION == sourceType ? Optional.of(this.sourceId) : Optional.empty();
+  }
+
+
 }

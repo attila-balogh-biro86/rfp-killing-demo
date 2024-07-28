@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import com.littlebig.rfpkillingmodel.domain.RFP;
 
 @Repository
-public interface RFPRepository extends BaseRepository<RFP, Long> {
+public interface RFPRepository extends org.springframework.data.jpa.repository.JpaRepository<RFP, Long> {
 }
