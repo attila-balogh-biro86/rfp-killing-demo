@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.littlebig.rfpkillingmodel.domain.Mission;
-import com.littlebig.rfpkillingmodel.domain.MissionSource;
+import com.littlebig.rfpkillingmodel.domain.MissionSourceTypes;
 import com.littlebig.rfpkillingmodel.repo.MissionRepository;
 
 @Service
@@ -20,7 +20,7 @@ public class MissionService {
   public Mission createMissionFromRFP(Long rfpId) {
     Mission mission = new Mission();
     mission.setSourceId(rfpId);
-    mission.setSourceType(MissionSource.RFP);
+    mission.setSourceType(MissionSourceTypes.RFP);
     mission.setMissionDescription("Mission from RFP");
     return missionRepository.save(mission);
   }
@@ -28,7 +28,7 @@ public class MissionService {
   public Mission createMissionFromQuotation(Long quotationId) {
     Mission mission = new Mission();
     mission.setSourceId(quotationId);
-    mission.setSourceType(MissionSource.QUOTATION);
+    mission.setSourceType(MissionSourceTypes.QUOTATION);
     mission.setMissionDescription("Mission from quotation");
     return missionRepository.save(mission);
   }

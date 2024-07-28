@@ -35,9 +35,9 @@ class RfpKillingModelApplicationTests {
     quotation.setName("New Quotation");
     quotation = quotationRepository.save(quotation);
 
-    Mission missionFromRFP = missionService.createMissionFromRFP(rfp.getId());
+    Mission<RFP> missionFromRFP = missionService.createMissionFromRFP(rfp.getId());
     missionFromRFP = missionService.getMission(missionFromRFP.getId());
-    Mission missionFromQuotation = missionService.createMissionFromQuotation(quotation.getId());
+    Mission<Quotation> missionFromQuotation = missionService.createMissionFromQuotation(quotation.getId());
     missionFromQuotation = missionService.getMission(missionFromQuotation.getId());
 
     System.out.println("Mission from RFP: " + missionFromRFP.getId());
@@ -47,4 +47,4 @@ class RfpKillingModelApplicationTests {
 
     Assertions.assertEquals(missionFromQuotation.getSource().getId(), quotation.getId());
   }
-  }
+}
