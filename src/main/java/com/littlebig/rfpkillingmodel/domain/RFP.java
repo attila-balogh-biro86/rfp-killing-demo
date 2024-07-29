@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class RFP implements  MissionSource {
+public class RFP implements MissionSource {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

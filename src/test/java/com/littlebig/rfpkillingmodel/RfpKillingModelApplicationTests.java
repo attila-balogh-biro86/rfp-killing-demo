@@ -44,7 +44,9 @@ class RfpKillingModelApplicationTests {
     System.out.println("Mission from Quotation: " + missionFromQuotation.getId());
 
     Assertions.assertEquals(missionFromRFP.getSource().getId(), rfp.getId());
+    Assertions.assertNotNull(missionFromRFP.getRfpId());
 
     Assertions.assertEquals(missionFromQuotation.getSource().getId(), quotation.getId());
+    Assertions.assertEquals(Boolean.TRUE,missionFromQuotation.getRfpId().isEmpty());
   }
 }

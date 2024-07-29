@@ -42,13 +42,8 @@ public class Mission<T extends MissionSource>{
     Mission.sourceLoaderService = sourceLoaderService;
   }
 
+  // For backward compatibility
   public Optional<Long> getRfpId(){
-    return MissionSourceTypes.RFP == sourceType ? Optional.of(this.sourceId) : Optional.empty();
+    return MissionSourceTypes.RFP == sourceType ? Optional.of(sourceId) : Optional.empty();
   }
-
-  public Optional<Long> getQuotationId(){
-    return MissionSourceTypes.QUOTATION == sourceType ? Optional.of(this.sourceId) : Optional.empty();
-  }
-
-
 }
